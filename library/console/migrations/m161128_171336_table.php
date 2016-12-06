@@ -32,25 +32,6 @@ CREATE TABLE IF NOT EXISTS `book` (
 
 -- --------------------------------------------------------
 
---
--- Структура таблицы `migration`
---
-
-CREATE TABLE IF NOT EXISTS `migration` (
-  `version` varchar(180) NOT NULL,
-  `apply_time` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `migration`
---
-
-INSERT INTO `migration` (`version`, `apply_time`) VALUES
-('m000000_000000_base', 1480352696),
-('m130524_201442_init', 1480352699),
-('m161128_170608_stucture', 1480352931);
-
--- --------------------------------------------------------
 
 --
 -- Структура таблицы `user`
@@ -71,10 +52,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 -- Дамп данных таблицы `user`
 --
-
-INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'YOv1-kYL0qrw18k-dO65UvnPsFqZz8KM', '$2y$13$lufwA14Oithn.oG/cLwGH.JHkXz97eroUvlFlUJ9jYrNT5tOQzrcS', NULL, 'admin@admin.ru', 10, 1480352748, 1480352748);
-
+	$hash = '$2y$13$lufwA14Oithn.oG/cLwGH.JHkXz97eroUvlFlUJ9jYrNT5tOQzrcS';
+    $this->execute("INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'YOv1-kYL0qrw18k-dO65UvnPsFqZz8KM', '$hash', NULL, 'admin@admin.ru', 10, 1480352748, 1480352748);");
+    }
 --
 -- Индексы сохранённых таблиц
 --
@@ -93,10 +74,7 @@ ALTER TABLE `book`
   ADD KEY `author_id` (`author_id`);
 
 --
--- Индексы таблицы `migration`
---
-ALTER TABLE `migration`
-  ADD PRIMARY KEY (`version`);
+
 
 --
 -- Индексы таблицы `user`

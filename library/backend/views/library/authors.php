@@ -1,4 +1,4 @@
-<?php use yii\helpers\html; ?>
+<?php use yii\helpers\Html; ?>
 <table class="table">
 	<tr>
 		<th>Фамилия </th> 
