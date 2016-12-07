@@ -63,13 +63,17 @@ class LibraryController extends Controller
 	public function actionEdit_author($id)
 	{
 		$author = Author::findOne($id);
-		if (isset($_POST['Author'])){
-			$author->attributes=$_POST['Author'];
-			if ($author->save()){
-				return $this -> redirect(['library/authors']);
+		if ($author){
+			if (isset($_POST['Author'])){
+				$author->attributes=$_POST['Author'];
+				if ($author->save()){
+					return $this -> redirect(['library/authors']);
+				} 
 			}
-		}
 		return $this -> render('form_author', ['author'=> $author]);	
+		} else {
+			throw new \yii\web\NotFoundHttpException('Автор не найден');
+		}
 	}
 	public function actionDelete_author($id)
 	{
@@ -94,13 +98,17 @@ class LibraryController extends Controller
 	{
 		$book = Book::findOne($id);
 		$author= Author::find()->all();
-		if (isset($_POST['Book'])){
-			$book->attributes=$_POST['Book'];
-			if ($book->save()){
-				return $this -> redirect(['library/books']);
+		if ($book){
+			if (isset($_POST['Book'])){
+				$book->attributes=$_POST['Book'];
+				if ($book->save()){
+					return $this -> redirect(['library/books']);
+				}
 			}
-		}
-		return $this -> render('form_book', ['book'=> $book, 'author' =>$author]);	
+		return $this -> render('form_book', ['book'=> $book, 'author' =>$author]);
+		} else {
+			throw new \yii\web\NotFoundHttpException('Книга не найдена');
+		}		
 	}
 	public function actionDelete_book($id)
 	{
