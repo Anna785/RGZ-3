@@ -6,7 +6,7 @@ class m161207_110856_struc extends Migration
 {
     public function up()
     {
-$this->execute("ALTER TABLE `library`.`author` ADD PRIMARY KEY (`id`);
+$this->execute("ALTER TABLE `author` ADD PRIMARY KEY (`id`);
 	ALTER TABLE `author` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;");
     }
 
