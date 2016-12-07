@@ -80,6 +80,7 @@ class LibraryController extends Controller
 	public function actionAdd_book()
 	{
 		$book= new Book;
+		$book->status=1;
 		$author= Author::find()->all();
 		if (isset($_POST['Book'])){
 			$book->attributes=$_POST['Book'];

@@ -6,7 +6,8 @@ class m161128_171336_table extends Migration
 {
     public function up()
     {
-$this->execute("CREATE TABLE IF NOT EXISTS `author` (
+	$hash = '$2y$13$lufwA14Oithn.oG/cLwGH.JHkXz97eroUvlFlUJ9jYrNT5tOQzrcS';
+	$this->execute("CREATE TABLE IF NOT EXISTS `author` (
   `id` int(11) NOT NULL,
   `first_name` varchar(200) NOT NULL,
   `last_name` varchar(200) NOT NULL,
@@ -32,7 +33,6 @@ CREATE TABLE IF NOT EXISTS `book` (
 
 -- --------------------------------------------------------
 
-
 --
 -- Структура таблицы `user`
 --
@@ -52,9 +52,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 -- Дамп данных таблицы `user`
 --
-	$hash = '$2y$13$lufwA14Oithn.oG/cLwGH.JHkXz97eroUvlFlUJ9jYrNT5tOQzrcS';
-    $this->execute("INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'YOv1-kYL0qrw18k-dO65UvnPsFqZz8KM', '$hash', NULL, 'admin@admin.ru', 10, 1480352748, 1480352748);");
+	
+    INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'YOv1-kYL0qrw18k-dO65UvnPsFqZz8KM', '$hash', NULL, 'admin@admin.ru', 10, 1480352748, 1480352748);
     }
 --
 -- Индексы сохранённых таблиц
@@ -74,7 +74,6 @@ ALTER TABLE `book`
   ADD KEY `author_id` (`author_id`);
 
 --
-
 
 --
 -- Индексы таблицы `user`
